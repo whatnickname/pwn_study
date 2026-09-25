@@ -1,0 +1,21 @@
+{
+  "name": "Pwn CTF Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": "true",
+      "configureZshAsDefaultShell": "true",
+      "installOhMyZsh": "true"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "swyddfa.maple-font",
+        "formulahendry.code-runner"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install -y python3-pip python3-dev git libssl-dev libffi-dev build-essential gdb gdb-server libc6:i386 libncurses5:i386 libstdc++6:i386 && pip3 install --no-cache-dir pwntools && git clone https://github.com/pwndbg/pwndbg && cd pwndbg && ./setup.sh"
+}
